@@ -3,93 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Monitoreo Inteligente del Estrés</title>
+<title>Monitoreo Inteligente del Estrés para la Seguridad Vial</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
 <style>
+    /* Estilo General */
     body {
         font-family: 'Roboto', sans-serif;
         margin: 0;
         padding: 0;
+        background-color: #f4f4f9;
         color: #333;
-        background-color: #f9f9f9;
-    }
-    h1, h2, h3 {
-        color: #5f27cd;
-    }
-    h2 {
-        font-size: 2.5em;
-        text-align: center;
-        margin-bottom: 10px;
-    }
-    h3 {
-        font-size: 1.8em;
-        margin-bottom: 8px;
-    }
-    p, ul, li {
-        font-size: 1.1em;
-        line-height: 1.6;
-        color: #555;
-    }
-    .section {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 30px 20px;
-        margin-bottom: 20px;
-    }
-    .bg-light {
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        border-radius: 10px;
-    }
-    .bg-gray {
-        background-color: #f3f4f6;
-        padding: 40px 20px;
-        border-radius: 10px;
-    }
-    .text-center {
-        text-align: center;
-    }
-    .cta-button {
-        display: inline-block;
-        padding: 12px 24px;
-        background-color: #5f27cd;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 25px;
-        transition: background-color 0.3s ease;
-    }
-    .cta-button:hover {
-        background-color: #3c1d8d;
-    }
-    .grid-container {
-        display: grid;
-        gap: 20px;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-    .card {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .icon-check {
-        color: #34c759;
-        margin-right: 10px;
     }
     header {
-        background-color: #5f27cd;
-        color: #fff;
-        padding: 50px 20px;
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        padding: 60px 20px;
         text-align: center;
     }
     header h1 {
-        font-size: 2.8em;
+        font-size: 2.5em;
         margin: 0;
     }
     header p {
         font-size: 1.2em;
+        color: #bdc3c7;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    /* Navegación en Pestañas */
+    .tabs {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 20px;
+        border-bottom: 1px solid #ddd;
+    }
+    .tab {
+        padding: 10px 15px;
+        cursor: pointer;
+        font-weight: 500;
+        color: #2c3e50;
+        border-bottom: 3px solid transparent;
+        transition: all 0.3s;
+    }
+    .tab:hover, .tab.active {
+        color: #2980b9;
+        border-color: #2980b9;
+    }
+
+    /* Contenido */
+    .content {
+        display: none;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+    .content.active {
+        display: block;
+    }
+    h2 {
+        color: #2980b9;
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+    p, ul, li {
+        font-size: 1.1em;
+        line-height: 1.8;
+        color: #555;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+    
+    /* Botones de llamada a la acción */
+    .cta-button {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #2980b9;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
         margin-top: 10px;
-        color: #ddd;
+        display: inline-block;
+    }
+    .cta-button:hover {
+        background-color: #1b5a80;
+    }
+    
+    /* Estilo de la Galería de Imágenes */
+    .image-container {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .image-container img {
+        max-width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Pie de Página */
+    footer {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        padding: 30px 20px;
+        text-align: center;
+        margin-top: 40px;
+    }
+    footer p {
+        font-size: 1.1em;
+    }
+    footer a {
+        color: #2980b9;
+        text-decoration: none;
     }
 </style>
 </head>
@@ -101,186 +138,115 @@
     <p>Prototipos de electrodos inalámbricos, recargables e inteligentes para un monitoreo en tiempo real</p>
 </header>
 
+<div class="container">
+    <!-- Navegación en pestañas -->
+    <div class="tabs">
+        <div class="tab active" onclick="showContent('descripcion')">Descripción del Proyecto</div>
+        <div class="tab" onclick="showContent('analisis')">Análisis del Problema</div>
+        <div class="tab" onclick="showContent('beneficios')">Beneficios del Producto</div>
+        <div class="tab" onclick="showContent('desarrollo')">Desarrollo del Producto</div>
+        <div class="tab" onclick="showContent('mercado')">Mercado</div>
+        <div class="tab" onclick="showContent('interes')">Interés en el Proyecto</div>
+    </div>
 
-<!-- Descripción del Proyecto -->
-<section class="section bg-gray">
-    <h2>Descripción del Proyecto en una Frase</h2>
-    <p class="text-center text-gray">Sistema de electrodos inteligentes e inalámbricos que monitorean en tiempo real el ECG de los conductores, ayudando a prevenir accidentes por estrés y cansancio.</p>
-</section>
+    <!-- Secciones de Contenido -->
+    <div id="descripcion" class="content active">
+        <h2>Descripción en una Frase</h2>
+        <p>Sistema de electrodos inteligentes e inalámbricos que monitorean en tiempo real el ECG de los conductores, ayudando a prevenir accidentes por estrés y cansancio.</p>
+        <h2>Visión General del Producto</h2>
+        <p>Nuestro sistema de monitoreo está diseñado para captar la actividad eléctrica del corazón, evaluando los niveles de estrés del conductor y ayudando a prevenir situaciones de riesgo.</p>
+    </div>
 
-<!-- Visión General del Producto -->
-<section class="section bg-light">
-    <h2>Visión General del Producto</h2>
-    <h3 class="text-center">Sistema de Electrodos Inalámbricos: Seguridad Proactiva en el Camino</h3>
-    <p class="text-center text-gray">Nuestro sistema de monitoreo está diseñado para captar la actividad eléctrica del corazón, evaluando los niveles de estrés del conductor y ayudando a prevenir situaciones de riesgo...</p>
-</section>
+    <div id="analisis" class="content">
+        <h2>Problema a Resolver</h2>
+        <p>Los accidentes de tráfico causados por el estrés y la fatiga del conductor son una preocupación creciente...</p>
+        <h2>Usuarios Finales</h2>
+        <p>Este sistema está diseñado para empresas de transporte de mercancías y pasajeros, conductores profesionales y conductores particulares.</p>
+        <h2>Justificación e Impacto</h2>
+        <p>El estrés es un factor determinante en la seguridad vial y la salud ocupacional. Este sistema ofrece un enfoque preventivo para monitorear y mitigar los efectos del estrés.</p>
+    </div>
 
-<!-- Problema a Resolver -->
-<section class="section bg-gray">
-    <h2>¿Cuál es el Problema a Resolver?</h2>
-    <p class="text-center text-gray">Los accidentes de tráfico causados por el estrés y la fatiga del conductor son una preocupación creciente...</p>
-</section>
+    <div id="beneficios" class="content">
+        <h2>Beneficios Potenciales para los Usuarios</h2>
+        <ul>
+            <li>Monitoreo en tiempo real de los niveles de estrés.</li>
+            <li>Mejora la seguridad vial y reduce accidentes.</li>
+            <li>Optimización de costos operativos para empresas.</li>
+            <li>Mejora en la salud ocupacional de los conductores.</li>
+        </ul>
+        <h2>Características Clave</h2>
+        <ul>
+            <li>Electrodos Inteligentes y Biocompatibles</li>
+            <li>Conectividad Inalámbrica ESP-NOW</li>
+            <li>Adquisición de Señales de Alta Resolución</li>
+            <li>Sistema de Energía Recargable</li>
+        </ul>
+        <h2>Ventajas del Sistema</h2>
+        <ul>
+            <li>Seguridad Vial Mejorada</li>
+            <li>Reducción de Costos Operativos</li>
+            <li>Diseño No Invasivo</li>
+            <li>Escalabilidad</li>
+        </ul>
+        <h2>Aplicaciones Potenciales</h2>
+        <ul>
+            <li>Transporte de Mercancías y Pasajeros</li>
+            <li>Conductores Particulares</li>
+            <li>Empresas de Gestión de Riesgos</li>
+        </ul>
+    </div>
 
-<!-- Usuarios Finales -->
-<section class="section bg-light">
-    <h2>¿Quiénes son los Usuarios Finales?</h2>
-    <p class="text-center text-gray">Este sistema está diseñado para empresas de transporte de mercancías y pasajeros, conductores profesionales y conductores particulares...</p>
-</section>
+    <div id="desarrollo" class="content">
+        <h2>Principio de Funcionamiento</h2>
+        <ul>
+            <li>Captura de Señales: Los electrodos capturan la actividad eléctrica del corazón.</li>
+            <li>Filtrado y Amplificación de Señales.</li>
+            <li>Transmisión Inalámbrica de Datos.</li>
+            <li>Visualización y Análisis en Tiempo Real.</li>
+        </ul>
+        <h2>Etapas de Desarrollo</h2>
+        <ul>
+            <li>Pruebas Finales en Laboratorio</li>
+            <li>Pruebas Piloto en Entornos Reales</li>
+            <li>Certificación y Validaciones Regulatorias</li>
+            <li>Tiempo Estimado: 12-18 meses</li>
+        </ul>
+        <h2>Innovación y Aspectos Diferenciales</h2>
+        <p>La mayor innovación de nuestro sistema es su capacidad de monitoreo continuo e inalámbrico del estrés mediante electrodos recargables, permitiendo intervención inmediata en situaciones de estrés elevado.</p>
+    </div>
 
-<!-- Justificación e Impacto del Proyecto -->
-<section class="section bg-gray">
-    <h2>Justificación e Impacto del Proyecto</h2>
-    <p class="text-center text-gray">El estrés es un factor determinante en la seguridad vial y la salud ocupacional. Este sistema ofrece un enfoque preventivo para monitorear y mitigar los efectos del estrés...</p>
-</section>
-
-<!-- Beneficios Potenciales -->
-<section class="section bg-light">
-    <h2>Beneficios Potenciales para los Usuarios</h2>
-    <div class="grid-container">
-        <div class="card">
-            <h3>Monitoreo en Tiempo Real</h3>
-            <p>Detecta niveles de estrés, permitiendo intervenciones preventivas.</p>
-        </div>
-        <div class="card">
-            <h3>Mejora de la Seguridad Vial</h3>
-            <p>Reduce el riesgo de accidentes relacionados con el estrés.</p>
-        </div>
-        <div class="card">
-            <h3>Optimización de Costos Operativos</h3>
-            <p>Previene incidentes, beneficiando a empresas de transporte y conductores.</p>
-        </div>
-        <div class="card">
-            <h3>Salud Ocupacional Mejorada</h3>
-            <p>Ayuda a los conductores a mantener bienestar y productividad.</p>
+    <div id="mercado" class="content">
+        <h2>Importancia del Mercado</h2>
+        <p>El mercado de tecnologías de monitoreo de la salud y seguridad vial está en crecimiento, con un aumento anual proyectado del 10% en América Latina.</p>
+        <h2>Video Explicativo</h2>
+        <p>Para una visión más detallada de cómo funciona el sistema, explora nuestro video explicativo.</p>
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-top: 20px;">
+            <iframe src="https://drive.google.com/file/d/1x6QAJb6G2ZpLxkMoyhWstn4k4FX00MQp/preview" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
         </div>
     </div>
-</section>
 
-<!-- Características Clave -->
-<section class="section bg-gray">
-    <h2>Características Clave del Producto</h2>
-    <div class="grid-container">
-        <div class="card">
-            <h3>Electrodos Inteligentes y Biocompatibles</h3>
-            <ul>
-                <li><span class="icon-check">✔</span>Alta Conductividad</li>
-                <li><span class="icon-check">✔</span>Material Hipoalergénico</li>
-                <li><span class="icon-check">✔</span>Durabilidad</li>
-            </ul>
-        </div>
-        <div class="card">
-            <h3>Conectividad Inalámbrica ESP-NOW</h3>
-            <ul>
-                <li><span class="icon-check">✔</span>Conexión Estable</li>
-                <li><span class="icon-check">✔</span>Baja Latencia</li>
-                <li><span class="icon-check">✔</span>Eficiencia Energética</li>
-            </ul>
-        </div>
-        <div class="card">
-            <h3>Adquisición de Señales de Alta Resolución</h3>
-            <ul>
-                <li><span class="icon-check">✔</span>Frecuencia de Muestreo de 2 kHz</li>
-                <li><span class="icon-check">✔</span>Amplificadores de Alta Precisión</li>
-            </ul>
-        </div>
-        <div class="card">
-            <h3>Sistema de Energía Recargable</h3>
-            <ul>
-                <li><span class="icon-check">✔</span>Batería LiPo de 3.7V y 400mAh</li>
-                <li><span class="icon-check">✔</span>Sensor de Corriente (INA219)</li>
-            </ul>
-        </div>
+    <div id="interes" class="content">
+        <h2>Información Adicional</h2>
+        <p>Si deseas recibir más información o participar en el desarrollo de esta tecnología, llena nuestras encuestas:</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQvn00KTyU8LR5ox6gMsBXJwJxeh2lyzPfXDStAoysbSmpJA/viewform?usp=pp_url" class="cta-button" target="_blank">Encuesta de Opinión sobre el Sistema</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIxSKVaI_r17VD9QEsN4JBzaYUoA5uHAlcHs6PsBI4EEulqw/viewform?usp=pp_url" class="cta-button" target="_blank">Encuesta de Opinión para Empresas</a>
     </div>
-</section>
+</div>
 
-<!-- Ventajas del Sistema -->
-<section class="section bg-light">
-    <h2>Ventajas del Sistema</h2>
-    <div class="grid-container">
-        <div class="card"><h3>Seguridad Vial Mejorada</h3><p>Reduce riesgos de accidentes vinculados al estrés.</p></div>
-        <div class="card"><h3>Reducción de Costos Operativos</h3><p>Minimiza costos asociados a accidentes y tiempos de inactividad.</p></div>
-        <div class="card"><h3>Diseño No Invasivo</h3><p>Cómodo y adecuado para un uso prolongado en entornos de conducción profesional.</p></div>
-        <div class="card"><h3>Escalabilidad</h3><p>Fácil de integrar con sistemas de gestión de flotas y monitoreo.</p></div>
-        <div class="card"><h3>Beneficios Medioambientales</h3><p>Prevención de accidentes que podrían causar impactos negativos en el entorno.</p></div>
-    </div>
-</section>
-
-<!-- Principio de Funcionamiento -->
-<section class="section bg-gray">
-    <h2>Principio de Funcionamiento</h2>
-    <ul>
-        <li><span class="icon-check">✔</span>Captura de Señales: Los electrodos capturan la actividad eléctrica del corazón.</li>
-        <li><span class="icon-check">✔</span>Filtrado y Amplificación de Señales: Procesamiento de señales para eliminar ruidos y amplificar.</li>
-        <li><span class="icon-check">✔</span>Transmisión Inalámbrica de Datos: Datos enviados al receptor remoto vía ESP32.</li>
-        <li><span class="icon-check">✔</span>Visualización y Análisis en Tiempo Real: Procesamiento y visualización detallada con alertas instantáneas.</li>
-    </ul>
-</section>
-
-<!-- Desarrollo del Producto -->
-<section class="section bg-light">
-    <h2>Desarrollo del Producto y Etapas Faltantes</h2>
-    <ul>
-        <li>Pruebas Finales en Laboratorio: Validación de componentes y procesamiento de señales.</li>
-        <li>Pruebas Piloto en Entornos Reales: Evaluaciones en campo para optimizar el sistema.</li>
-        <li>Certificación y Validaciones Regulatorias: Cumplimiento con estándares de salud.</li>
-        <li>Tiempo Estimado: 12-18 meses para alcanzar el nivel precompetitivo.</li>
-    </ul>
-</section>
-
-<!-- Innovación y Aspectos Diferenciales -->
-<section class="section bg-gray">
-    <h2>Innovación y Aspectos Diferenciales</h2>
-    <p class="text-gray">La mayor innovación de nuestro sistema es su capacidad de monitoreo continuo e inalámbrico del estrés mediante electrodos recargables. Permite intervención inmediata en situaciones de estrés elevado.</p>
-</section>
-
-<!-- Importancia del Mercado -->
-<section class="section bg-light">
-    <h2>Importancia del Mercado</h2>
-    <div class="grid-container">
-        <div class="card"><h3>Impacto Económico</h3><p>Reducción de costos relacionados con accidentes y tiempos de inactividad en el sector de transporte.</p></div>
-        <div class="card"><h3>Impacto Social</h3><p>Mejorar la seguridad vial reduce lesiones y mejora la salud de los conductores.</p></div>
-        <div class="card"><h3>Tamaño del Mercado y Crecimiento</h3><p>El mercado global de tecnologías de seguridad vial y monitoreo de estrés crecerá un 7% anualmente, alcanzando los USD 55.3 mil millones para 2032.</p></div>
-    </div>
-</section>
-
-<!-- Aplicaciones Potenciales -->
-<section class="section bg-gray">
-    <h2>Aplicaciones Potenciales</h2>
-    <div class="grid-container">
-        <div class="card"><h3>Transporte de Mercancías y Pasajeros</h3><p>Perfecto para flotas de camiones, autobuses y empresas de logística que priorizan la seguridad.</p></div>
-        <div class="card"><h3>Conductores Particulares</h3><p>Ideal para quienes desean monitorear su bienestar y reducir riesgos de conducción.</p></div>
-        <div class="card"><h3>Empresas de Gestión de Riesgos</h3><p>Solución de seguridad ocupacional para reducir accidentes y mejorar la productividad.</p></div>
-    </div>
-</section>
-
-<!-- Video Explicativo -->
-<section class="section bg-light text-center">
-    <h2>Video Explicativo</h2>
-    <p class="text-gray">Para una visión más detallada de cómo funciona el sistema, explora nuestro video explicativo.</p>
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-top: 20px;">
-        <iframe src="https://drive.google.com/file/d/1x6QAJb6G2ZpLxkMoyhWstn4k4FX00MQp/preview" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-    </div>
-</section>
-
-
-<!-- ¿Interesado en Conocer Más? -->
-<section class="section bg-gray text-center">
-    <h2>¿Interesado en Conocer Más?</h2>
-    <p class="text-gray">Si deseas recibir más información o participar en el desarrollo de esta tecnología, llena nuestras encuestas:</p>
-    <ul>
-        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeQvn00KTyU8LR5ox6gMsBXJwJxeh2lyzPfXDStAoysbSmpJA/viewform?usp=pp_url" target="_blank" class="cta-button">Encuesta de Opinión sobre el Sistema</a></li>
-        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeIxSKVaI_r17VD9QEsN4JBzaYUoA5uHAlcHs6PsBI4EEulqw/viewform?usp=pp_url" target="_blank" class="cta-button">Encuesta de Opinión para Empresas</a></li>
-    </ul>
-</section>
-
-<!-- Información Personal -->
-<footer class="section bg-light text-center">
-    <h2>Información de Contacto</h2>
+<footer>
     <p><strong>Bryan Alexis Jiménez Aguilar</strong></p>
-    <p>Estudiante de Posgrado de la Maestría en Tecnología Avanzada - IPN CICATA Querétaro</p>
-    <p>Email: <a href="mailto:mcbajimenez2400@alumno.ipn.mx" class="cta-button">mcbajimenez2400@alumno.ipn.mx</a></p>
+    <p>Estudiante de Posgrado - Maestría en Tecnología Avanzada - IPN CICATA Querétaro</p>
+    <p>Email: <a href="mailto:mcbajimenez2400@alumno.ipn.mx">mcbajimenez2400@alumno.ipn.mx</a></p>
 </footer>
 
+<script>
+    function showContent(id) {
+        document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        document.querySelector(`.tab[onclick="showContent('${id}')"]`).classList.add('active');
+    }
+</script>
 
 </body>
 </html>
