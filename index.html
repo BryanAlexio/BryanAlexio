@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitoreo Inteligente del Estrés para la Seguridad Vial</title>
+    <title>Desarrollo de electrocardiógrafo inalámbrico para aplicaciones de seguridad vial</title>
+    <link rel="icon" href="https://bryanalexio.github.io/BryanAlexio/logo_oficial1.2.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         /* Variables CSS para colores y transiciones */
         :root {
@@ -19,12 +22,19 @@
 
         /* Animación de entrada */
         @keyframes circle-swoop {
-            from { clip-path: var(--circle-top-right-out); }
-            to { clip-path: var(--circle-bottom-right-in); }
+            from {
+                clip-path: var(--circle-top-right-out);
+            }
+
+            to {
+                clip-path: var(--circle-bottom-right-in);
+            }
         }
 
         /* Efecto de animación aplicado al cuerpo */
-        .animated-circle-swoop { animation: circle-swoop 5s ease-in-out; }
+        .animated-circle-swoop {
+            animation: circle-swoop 5s ease-in-out;
+        }
 
         /* Estilo General */
         body {
@@ -49,8 +59,17 @@
         }
 
         /* Logo y contenedor de texto del encabezado */
-        .logo-container { display: flex; justify-content: center; width: 100%; margin-bottom: 10px; }
-        .logo { width: 180px; }
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            width: 180px;
+        }
+
         .text-container {
             background-color: rgba(44, 62, 80, 0.7);
             padding: 15px;
@@ -60,23 +79,32 @@
         }
 
         /* Estilos del título y navegación */
-        header h1, header p { margin: 5px 0; }
+        header h1,
+        header p {
+            margin: 5px 0;
+        }
+
         .nav-menu {
             display: flex;
             gap: 10px;
             justify-content: center;
             margin-top: 10px;
         }
+
         .nav-menu a {
             color: #f0f0f0;
             text-decoration: none;
             padding: 5px 10px;
             border-radius: 3px;
         }
-        .nav-menu a:hover { background-color: rgba(255, 255, 255, 0.2); }
+
+        .nav-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
 
         /* Interacciones del encabezado y pie de página */
-        header, footer {
+        header,
+        footer {
             background-color: var(--primary-color);
             color: var(--secondary-color);
             padding: 10px;
@@ -85,15 +113,27 @@
             opacity: 0.8;
             transition: background-color var(--transition-duration);
         }
-        header:hover, footer:hover {
+
+        header:hover,
+        footer:hover {
             background-color: #34495e;
             opacity: 0.7;
         }
 
         /* Pie de página */
-        footer { margin-top: 40px; padding: 30px; }
-        footer a { color: var(--secondary-color); transition: color var(--transition-duration); }
-        footer a:hover { color: var(--highlight-color); }
+        footer {
+            margin-top: 40px;
+            padding: 30px;
+        }
+
+        footer a {
+            color: var(--secondary-color);
+            transition: color var(--transition-duration);
+        }
+
+        footer a:hover {
+            color: var(--highlight-color);
+        }
 
         /* Efecto de imágenes y botones */
         .card img {
@@ -102,11 +142,19 @@
             transition: filter var(--transition-duration), transform var(--transition-duration);
             filter: grayscale(100%) sepia(20%) hue-rotate(180deg) saturate(150%);
         }
-        .card img:hover { filter: grayscale(0%); transform: scale(1.05); }
+
+        .card img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
 
         /* Contenedor principal */
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
         /* Sección introductoria */
         .intro-section {
             display: flex;
@@ -115,9 +163,23 @@
             padding: 30px 20px;
             text-align: center;
         }
-        .intro-section img { max-width: 300px; border-radius: 10px; margin-bottom: 20px; }
-        .intro-section h2 { font-size: 2em; color: var(--primary-color); margin-bottom: 10px; }
-        .intro-section p { font-size: 1.1em; color: #555; }
+
+        .intro-section img {
+            max-width: 300px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .intro-section h2 {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .intro-section p {
+            font-size: 1.1em;
+            color: #555;
+        }
 
         /* Botón de llamada a la acción */
         .cta-button {
@@ -133,6 +195,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: background-color 0.1s ease, box-shadow 0.1s ease;
         }
+
         .cta-button:hover {
             background-color: #1b5a80;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
@@ -146,6 +209,7 @@
             justify-content: center;
             margin-top: 30px;
         }
+
         .card {
             background-color: #e0e1e1;
             border-radius: 10px;
@@ -156,27 +220,44 @@
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .card h3 { color: #2980b9; font-size: 1.5em; margin: 15px 0 10px; }
-        .card p { font-size: 1em; color: #555; }
+
+        .card h3 {
+            color: #2980b9;
+            font-size: 1.5em;
+            margin: 15px 0 10px;
+        }
+
+        .card p {
+            font-size: 1em;
+            color: #555;
+        }
+
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
 
         /* Estilos del contenedor de video */
-	.video-container {
-    background-color: var(--primary-color);
-    background-image: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url("https://bryanalexio.github.io/BryanAlexio/ipn.png");
-    background-size: 80px; /* Mantiene el tamaño de la marca de agua */
-    background-repeat: space; /* Agrega separación uniforme entre las marcas de agua */
-    padding: 40px 20px; /* Mantiene el espacio interno */
-    text-align: center;
-    color: var(--secondary-color);
-    margin: 40px 0;
-}
+        .video-container {
+            background-color: var(--primary-color);
+            background-image: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url("https://bryanalexio.github.io/BryanAlexio/ipn.png");
+            background-size: 80px;
+            /* Mantiene el tamaño de la marca de agua */
+            background-repeat: space;
+            /* Agrega separación uniforme entre las marcas de agua */
+            padding: 40px 20px;
+            /* Mantiene el espacio interno */
+            text-align: center;
+            color: var(--secondary-color);
+            margin: 40px 0;
+        }
 
 
-        .video-container h2 { font-size: 2em; margin-bottom: 20px; }
+        .video-container h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
         .video-container iframe {
             width: 100%;
             max-width: 800px;
@@ -192,19 +273,36 @@
             margin-bottom: 30px;
             margin-top: -30px;
         }
-        .image-row img { width: 256px; border-radius: 128px; }
+
+        .image-row img {
+            width: 256px;
+            border-radius: 128px;
+        }
+
+        .centered-title {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.8em;
+            color: #333;
+        }
     </style>
 </head>
+
 <body class="animated-circle-swoop">
 
+
+
     <!-- Encabezado principal -->
+
+
     <header>
         <div class="logo-container">
             <img src="https://bryanalexio.github.io/BryanAlexio/ipn.png" alt="Logo IPN" class="logo">
         </div>
         <div class="text-container">
-            <h1>Monitoreo Inteligente del Estrés para la Seguridad Vial</h1>
-            <p>Prototipos de electrodos inalámbricos, recargables e inteligentes para un monitoreo en tiempo real</p>
+            <h1>Desarrollo de electrocardiógrafo inalámbrico para aplicaciones de seguridad vial</h1>
+            <p> Prototipo de electrodos inalámbricos para monitoreo cardíaco en tiempo real, enfocado en la seguridad
+                vial y escalable a múltiples aplicaciones médicas</p>
             <nav class="nav-menu">
                 <a href="#intro">Inicio</a>
                 <a href="#video">Video</a>
@@ -214,75 +312,192 @@
         </div>
     </header>
 
+
     <!-- Sección Introductoria -->
+
+
     <div class="container" id="intro">
         <div class="intro-section">
             <div class="image-row">
-                <img src="https://bryanalexio.github.io/BryanAlexio/ipn.png" alt="Logo IPN 1">
+                <img src="https://bryanalexio.github.io/BryanAlexio/telefono.jpg" alt="Logo IPN 1">
                 <img src="https://bryanalexio.github.io/BryanAlexio/logo_oficial1.2.png" alt="Logo SyncBeatz">
-                <img src="https://bryanalexio.github.io/BryanAlexio/ipn.png" alt="Logo IPN 3">
+                <img src="https://bryanalexio.github.io/BryanAlexio/vehiculoecg.jpg" alt="Logo IPN 3">
             </div>
             <h2>Sistema de electrodos ECG</h2>
-            <p>Un sistema de monitoreo diseñado para captar la actividad eléctrica del corazón, evaluando los niveles de estrés del conductor y ayudando a prevenir situaciones de riesgo en tiempo real.</p>
+        </div>
+        <!-- Tarjetas en una sola fila sin desplazamiento -->
+        <div class="features" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+            <div class="feature-card"
+                style="background: #f8f9fa; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <img src="https://bryanalexio.github.io/BryanAlexio/inalambrica.png" alt="Wireless Electrodes Icon"
+                    style="height: 50px; margin-bottom: 10px;">
+                <h3 style="font-size: 1.2em; margin-bottom: 10px;">Electrodos Inalámbricos</h3>
+                <p>10 electrodos inalámbricos con capacidad de obtener las 12 derivaciones del corazón.</p>
+            </div>
+            <div class="feature-card"
+                style="background: #f8f9fa; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <img src="https://bryanalexio.github.io/BryanAlexio/medios-de-comunicacion-en-masa (1).png"
+                    alt="Mobile Data Icon" style="height: 50px; margin-bottom: 10px;">
+                <h3 style="font-size: 1.2em; margin-bottom: 10px;">Recepción de Datos</h3>
+                <p>Compatibilidad con dispositivos móviles para visualización en tiempo real.</p>
+            </div>
+            <div class="feature-card"
+                style="background: #f8f9fa; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <img src="https://bryanalexio.github.io/BryanAlexio/estres.png" alt="Stress Detection Icon"
+                    style="height: 50px; margin-bottom: 10px;">
+                <h3 style="font-size: 1.2em; margin-bottom: 10px;">Predicción de Estrés</h3>
+                <p>Predicción y detección de señales de estrés para prevenir accidentes.</p>
+            </div>
+            <div class="feature-card"
+                style="background: #f8f9fa; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <img src="https://bryanalexio.github.io/BryanAlexio/notificacion.png" alt="Notifications Icon"
+                    style="height: 50px; margin-bottom: 10px;">
+                <h3 style="font-size: 1.2em; margin-bottom: 10px;">Notificaciones en Tiempo Real</h3>
+                <p>Alertas para conductores y empresas, especialmente útil para flotillas.</p>
+            </div>
         </div>
     </div>
 
+
+
+
     <!-- Sección de Video Explicativo -->
+
+
     <div class="video-container" id="video">
         <h2>Explora Nuestro Video Explicativo</h2>
-        <iframe src="https://drive.google.com/file/d/1x6QAJb6G2ZpLxkMoyhWstn4k4FX00MQp/preview" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://drive.google.com/file/d/1x6QAJb6G2ZpLxkMoyhWstn4k4FX00MQp/preview" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <br>
         <a href="#contact" class="cta-button">Contáctanos para más información</a>
     </div>
 
+
+
     <!-- Sección de Características en Tarjetas -->
+
+
+    </div>
+    <h2 class="centered-title">Sistema de electrodos inteligentes e inalámbricos que monitorean en tiempo real el ECG de
+        los conductores, ayudando a prevenir accidentes por estrés</h2>
+    </div>
     <div class="product-section" id="features">
-        <div class="card">
-            <img src="https://bryanalexio.github.io/BryanAlexio/ipn.png" alt="Descripción del Proyecto">
-            <h3>Descripción en una Frase</h3>
-            <p>Sistema de electrodos inteligentes e inalámbricos que monitorean en tiempo real el ECG de los conductores, ayudando a prevenir accidentes por estrés y cansancio.</p>
-        </div>
+        <!-- Tarjeta 1 -->
         <div class="card">
             <img src="https://bryanalexio.github.io/BryanAlexio/visiongeneral.jpg" alt="Visión General">
             <h3>Visión General del Producto</h3>
-            <p>Capta la actividad eléctrica del corazón, evaluando los niveles de estrés del conductor y previniendo situaciones de riesgo.</p>
+            <p>El sistema consta de electrodos inalámbricos que monitorizan en tiempo real el electrocardiograma (ECG)
+                de los conductores. Ayuda a detectar señales de estrés y prevenir accidentes mediante alertas tempranas.
+            </p>
         </div>
+
+        <!-- Tarjeta 2 -->
         <div class="card">
-            <img src="https://bryanalexio.github.io/BryanAlexio/ipn.png" alt="Problema a Resolver">
+            <img src="https://bryanalexio.github.io/BryanAlexio/visiongeneral.jpg" alt="Problema a Resolver">
             <h3>Problema a Resolver</h3>
-            <p>Reducir los accidentes causados por el estrés y la fatiga del conductor mediante monitoreo continuo del estrés en tiempo real.</p>
+            <p>Más del 20% de los accidentes viales son provocados por el estrés y la fatiga del conductor. Este
+                producto permite identificar estas condiciones a tiempo, mejorando la seguridad vial y reduciendo costos
+                asociados.</p>
         </div>
+
+        <!-- Tarjeta 3 -->
         <div class="card">
             <img src="https://bryanalexio.github.io/BryanAlexio/beneficios.jpg" alt="Beneficios">
             <h3>Beneficios del Producto</h3>
-            <p>Mejora la seguridad vial, optimiza costos operativos para empresas y mejora la salud ocupacional de los conductores.</p>
+            <p>Ofrece monitoreo continuo sin cables, mejora la seguridad vial, optimiza los costos operativos para
+                empresas de transporte y fomenta la salud ocupacional de los conductores.</p>
         </div>
+
+        <!-- Tarjeta 4 -->
         <div class="card">
-            <img src="https://bryanalexio.github.io/BryanAlexio/ipn.png" alt="Características Clave">
+            <img src="https://bryanalexio.github.io/BryanAlexio/visiongeneral.jpg" alt="Características Clave">
             <h3>Características Clave</h3>
-            <p>Electrodos biocompatibles, conectividad inalámbrica, adquisición de señales de alta resolución y sistema de energía recargable.</p>
+            <p>Incluye sensores biocompatibles, conectividad inalámbrica de largo alcance, adquisición de señales de
+                alta resolución y baterías recargables con duración extendida.</p>
         </div>
+
+        <!-- Tarjeta 5 -->
         <div class="card">
-            <img src="https://bryanalexio.github.io/BryanAlexio/ipn.png" alt="Mercado">
-            <h3>Importancia del Mercado</h3>
-            <p>El mercado de tecnologías de monitoreo de salud y seguridad vial está en crecimiento, con una proyección anual del 10% en América Latina.</p>
+            <img src="https://bryanalexio.github.io/BryanAlexio/visiongeneral.jpg" alt="Conectividad">
+            <h3>Conectividad</h3>
+            <p>Compatible con dispositivos móviles y plataformas en la nube, permitiendo un análisis en tiempo real de
+                los datos capturados mediante protocolos de comunicación inalámbrica confiables y seguros.</p>
         </div>
+
+        <!-- Tarjeta 6 -->
         <div class="card">
-            <img src="https://bryanalexio.github.io/BryanAlexio/ipn.png" alt="Innovación">
+            <img src="https://bryanalexio.github.io/BryanAlexio/visiongeneral.jpg" alt="Aplicación Móvil">
+            <h3>Aplicación Móvil</h3>
+            <p>Proporciona una interfaz intuitiva para visualizar el estado de estrés del conductor. Envía
+                notificaciones automáticas a los operadores de flotillas en caso de anomalías.</p>
+        </div>
+
+        <!-- Tarjeta 7 -->
+        <div class="card">
+            <img src="https://bryanalexio.github.io/BryanAlexio/visiongeneral.jpg" alt="Casos de Uso">
+            <h3>Casos de Uso</h3>
+            <p>Diseñado para supervisar conductores de transporte de carga y pasajeros, monitorizar flotillas, y
+                aplicaciones médicas como telemedicina y monitoreo remoto de pacientes.</p>
+        </div>
+
+        <!-- Tarjeta 8 -->
+        <div class="card">
+            <img src="https://bryanalexio.github.io/BryanAlexio/visiongeneral.jpg" alt="Seguridad Vial">
+            <h3>Seguridad Vial</h3>
+            <p>El sistema ayuda a reducir el riesgo de accidentes en rutas largas mediante la detección de estrés y
+                fatiga. También promueve el cumplimiento de normativas de horas de conducción.</p>
+        </div>
+
+        <!-- Tarjeta 9 -->
+        <div class="card">
+            <img src="https://bryanalexio.github.io/BryanAlexio/visiongeneral.jpg" alt="Escalabilidad Médica">
+            <h3>Escalabilidad Médica</h3>
+            <p>Gracias a su diseño modular, el sistema puede ser utilizado para aplicaciones hospitalarias, monitoreo
+                postoperatorio y diagnóstico de afecciones cardiovasculares a distancia.</p>
+        </div>
+
+        <!-- Tarjeta 10 -->
+        <div class="card">
+            <img src="https://bryanalexio.github.io/BryanAlexio/visiongeneral.jpg" alt="Innovación">
             <h3>Innovación y Diferenciales</h3>
-            <p>Capacidad de monitoreo continuo e inalámbrico del estrés mediante electrodos recargables.</p>
+            <p>Integra tecnología de inteligencia artificial para predecir y detectar condiciones de estrés. Su diseño
+                inalámbrico lo diferencia de los sistemas tradicionales con cables.</p>
         </div>
+
+        <!-- Tarjeta 11 -->
         <div class="card">
-            <img src="https://bryanalexio.github.io/BryanAlexio/ipn.png" alt="Etapas de Desarrollo">
+            <img src="https://bryanalexio.github.io/BryanAlexio/visiongeneral.jpg" alt="Durabilidad y Energía">
+            <h3>Durabilidad y Energía</h3>
+            <p>El sistema cuenta con baterías de litio de larga duración que garantizan el monitoreo continuo durante
+                largas jornadas de trabajo. Es fácilmente recargable en cualquier entorno.</p>
+        </div>
+
+        <!-- Tarjeta 12 -->
+        <div class="card">
+            <img src="https://bryanalexio.github.io/BryanAlexio/visiongeneral.jpg" alt="Mercado">
+            <h3>Importancia del Mercado</h3>
+            <p>El mercado de tecnologías de monitoreo de salud está en crecimiento, con un 10% de incremento anual en
+                América Latina. Este producto es una solución innovadora y necesaria.</p>
+        </div>
+
+        <!-- Tarjeta 13 -->
+        <div class="card">
+            <img src="https://bryanalexio.github.io/BryanAlexio/visiongeneral.jpg" alt="Etapas de Desarrollo">
             <h3>Etapas de Desarrollo</h3>
-            <p>Pruebas en laboratorio, pruebas piloto en entornos reales, certificación, y validación. <br> Tiempo estimado: 12-18 meses.</p>
+            <p>Actualmente en fase de prototipado, el proyecto avanzará a pruebas piloto, certificación y
+                comercialización. Tiempo estimado para su implementación: 12-18 meses.</p>
         </div>
     </div>
 
+
     <!-- Botones de Encuesta -->
+
+
     <div class="intro-section">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQvn00KTyU8LR5ox6gMsBXJwJxeh2lyzPfXDStAoysbSmpJA/viewform?usp=pp_url" class="cta-button" target="_blank">Encuesta de Opinión sobre el Sistema</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIxSKVaI_r17VD9QEsN4JBzaYUoA5uHAlcHs6PsBI4EEulqw/viewform?usp=pp_url" class="cta-button" target="_blank">Encuesta de Opinión para Empresas</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQvn00KTyU8LR5ox6gMsBXJwJxeh2lyzPfXDStAoysbSmpJA/viewform?usp=pp_url"
+            class="cta-button" target="_blank">Encuesta de Opinión sobre el Sistema</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIxSKVaI_r17VD9QEsN4JBzaYUoA5uHAlcHs6PsBI4EEulqw/viewform?usp=pp_url"
+            class="cta-button" target="_blank">Encuesta de Opinión para Empresas</a>
     </div>
 
     <!-- Pie de Página -->
@@ -293,4 +508,5 @@
     </footer>
 
 </body>
+
 </html>
